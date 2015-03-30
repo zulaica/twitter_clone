@@ -1,8 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+article {
+  padding: 1rem 0;
+  }
+
 article + article {
   margin-top: 1rem;
-  padding-top: 1rem;
   border-top: 1px solid #ddd;
+  }
+
+article h3 {
+  margin: 1rem auto;
 }
+
+time {
+  display: block;
+  margin-bottom: 1rem;
+  font-style: italic;
+  }

@@ -18,8 +18,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     @post.published = Time.now
     if @post.save
-      flash[:notice] = "Your post was successfully created."
-      redirect_to posts_path
+      respond_to do |format|
+        flash[:notice] = "Your post was successfully created."
+        format.html { redirect_to posts_path }
+        format.js
+      end
     else
       render :new
     end

@@ -1,7 +1,5 @@
 <article>
-  <header>
-    <h3><%= post.user.username %></h3>
-    <time datetime="<%= post.published.strftime('%Y-%m-%dT%H:%M%z') %>"><%= post.published.strftime("%B %d, %Y at %I:%M%P \(%Z\)") %></time>
-  </header>
+  <h3><%= post.user.username %></h3>
   <p><%= post.body %></p>
+  <time datetime="<%= post.published.strftime('%Y-%m-%dT%H:%M%z') %>">Posted on <%= post.published.strftime("%B %d, %Y at %I:%M%P \(%Z\)") %></time>
 </article>
