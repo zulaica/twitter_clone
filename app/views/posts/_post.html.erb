@@ -1,0 +1,7 @@
+<article>
+  <header>
+    <h3><%= post.user.email %></h3>
+    <time datetime="<%= post.published.strftime('%Y-%m-%dT%H:%M%z') %>"><%= post.published.strftime("%B %d, %Y at %I:%M%P \(%Z\)") %></time>
+  </header>
+  <p><%= post.body %></p>
+</article>
