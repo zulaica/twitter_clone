@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TwitterClone</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>TwitterClone</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="container">
+      <div id="user_nav">
+        <%  if user_signed_in? %>
+          Logged in as <%= current_user.email %>.
+          <%= link_to "Edit Profile", edit_user_registration_path %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path %> |
+          <%= link_to "Login", new_user_session_path %>
+        <% end %>
+      </div>
+    </nav>
 
-<%= yield %>
+    <section class="container">
+      <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+      <div data-alert class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>" role="alert"><%= msg %></div>
+      <% end %>
+      <% end %>
+    </section>
 
-</body>
+    <main class="container">
+      <%= yield %>
+    </main>
+  </body>
 </html>
